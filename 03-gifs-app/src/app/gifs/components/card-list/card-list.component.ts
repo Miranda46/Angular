@@ -12,7 +12,7 @@ import { CardComponent } from "../card/card.component";
 export class CardListComponent {
 
   @Input()
-  public gifs : Gif = {};
+  public gifs : Gif[] = [];
 
 
 
