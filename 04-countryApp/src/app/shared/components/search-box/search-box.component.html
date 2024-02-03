@@ -1,0 +1,7 @@
+<input
+  type="text"
+  class="form-control"
+  [placeholder]="placeholder"
+  #txtInput
+  (keydown.enter)="search( txtInput.value )"
+>

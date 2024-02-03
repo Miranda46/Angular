@@ -24,7 +24,7 @@ export class ListComponent {
     //   console.log(index);
     // }
 
-    deleteCharacterbyID(id?: string):void{
+  deleteCharacterbyID(id?: string):void{
       if (!id) return;
       this.onDelete.emit(id);
     }
