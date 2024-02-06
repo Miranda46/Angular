@@ -3,6 +3,7 @@ import { CountriesService } from '../../services/countries.service';
 import { SharedModule } from "../../../shared/shared.module";
 import { CommonModule } from '@angular/common';
 import { Country } from '../../interfaces/countries.interfaces';
+import { CountriesTableComponent } from "../../components/countries-table/countries-table.component";
 
 @Component({
     selector: 'countries-by-country-page',
@@ -12,7 +13,7 @@ import { Country } from '../../interfaces/countries.interfaces';
     img {
       width:25px;
     }`,
-    imports: [SharedModule, CommonModule]
+    imports: [SharedModule, CommonModule, CountriesTableComponent]
 })
 export class ByCountryPageComponent {
 

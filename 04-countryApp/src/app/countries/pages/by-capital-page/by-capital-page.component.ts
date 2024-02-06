@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Country } from '../../interfaces/countries.interfaces';
 import { CountriesService } from './../../services/countries.service';
 import { SharedModule } from "../../../shared/shared.module";
+import { CountriesTableComponent } from "../../components/countries-table/countries-table.component";
 
 @Component({
     selector: 'countries-by-capital-page',
@@ -11,7 +12,7 @@ import { SharedModule } from "../../../shared/shared.module";
     styles: `img {
       width: 25px;
     }`,
-    imports: [SharedModule, CommonModule]
+    imports: [SharedModule, CommonModule, CountriesTableComponent]
 })
 export class ByCapitalPageComponent {
 
