@@ -8,7 +8,9 @@ import { SharedModule } from "../../../shared/shared.module";
     selector: 'countries-by-capital-page',
     standalone: true,
     templateUrl: './by-capital-page.component.html',
-    styles: ``,
+    styles: `img {
+      width: 25px;
+    }`,
     imports: [SharedModule, CommonModule]
 })
 export class ByCapitalPageComponent {
