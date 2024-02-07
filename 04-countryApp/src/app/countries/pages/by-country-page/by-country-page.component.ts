@@ -16,14 +16,18 @@ import { CountriesTableComponent } from "../../components/countries-table/countr
     imports: [SharedModule, CommonModule, CountriesTableComponent]
 })
 export class ByCountryPageComponent {
-
+  public isLoading : boolean = false;
   public countries : Country[] = [];
 
   constructor( private countriesServices : CountriesService){}
 
   searchByCountry( term : string ) {
+    this.isLoading = true;
     this.countriesServices.searchCountry( term )
-      .subscribe( (countries) => this.countries = countries);
+      .subscribe( (countries) => {
+        this.countries = countries
+        this.isLoading = false;}
+        );
   }
 
 

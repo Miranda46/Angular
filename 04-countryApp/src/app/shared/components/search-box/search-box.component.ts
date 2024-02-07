@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Subject, debounceTime } from 'rxjs';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subject, Subscription, debounceTime } from 'rxjs';
 
 @Component({
   selector: 'shared-search-box',
@@ -16,7 +16,8 @@ import { Subject, debounceTime } from 'rxjs';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchBoxComponent implements OnInit {
+export class SearchBoxComponent implements OnInit, OnDestroy {
+ 
 
   @Input()
   public placeholder : string = '';
@@ -29,13 +30,15 @@ export class SearchBoxComponent implements OnInit {
 
   public debouncer : Subject<string> = new Subject<string>;
 
+  public debouncerSubscription? : Subscription;
+
   search( value: string ): void{
     if ( value.length === 0 ) return;
     this.onValue.emit(value);;
   }
 
   ngOnInit() {
-    this.debouncer
+    this.debouncerSubscription = this.debouncer
     .pipe(
       debounceTime(500)
     )
@@ -43,6 +46,10 @@ export class SearchBoxComponent implements OnInit {
       this.onDebounce.emit( value )
     })
 
+  }
+
+  ngOnDestroy(): void {
+    this.debouncerSubscription?.unsubscribe();
   }
 
   onKeyPress( searchValue : string ){

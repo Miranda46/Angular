@@ -15,13 +15,16 @@ import { CountriesTableComponent } from "../../components/countries-table/countr
     imports: [SharedModule, CommonModule, CountriesTableComponent]
 })
 export class ByCapitalPageComponent {
-
+  public isLoading : boolean = false;
   public countries : Country[] = [];
 
   constructor( private countriesService: CountriesService ) {}
 
   searchByCapital ( value : string ): void {
+    this.isLoading = true;
     this.countriesService.searchCapital( value )
-      .subscribe(countries => this.countries = countries);
+      .subscribe(countries => {
+        this.countries = countries,
+        this.isLoading = false;});
 
 }}
