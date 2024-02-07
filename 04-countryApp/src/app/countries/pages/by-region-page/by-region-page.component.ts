@@ -4,6 +4,7 @@ import { CountriesService } from '../../services/countries.service';
 import { SharedModule } from "../../../shared/shared.module";
 import { CommonModule } from '@angular/common';
 import { CountriesTableComponent } from "../../components/countries-table/countries-table.component";
+import { fakeAsync } from '@angular/core/testing';
 
 @Component({
     selector: 'countries-by-region-page',
@@ -16,12 +17,21 @@ import { CountriesTableComponent } from "../../components/countries-table/countr
 export class ByRegionPageComponent {
 
   public countries : Country[] = [];
+  public isLoading : boolean = false;
 
   constructor( private countriesService : CountriesService ) {}
 
   searchByRegion( region : string ) {
+    this.isLoading = true;
     this.countriesService.searchRegion( region )
-      .subscribe( (countries) => this.countries = countries );
+      .subscribe( (countries) => {
+      this.countries = countries;
+      this.isLoading = false;}
+      );
+
+  
+    
+    
   }
 
 }
