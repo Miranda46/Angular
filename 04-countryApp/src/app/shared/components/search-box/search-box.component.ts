@@ -18,6 +18,8 @@ import { Subject, Subscription, debounceTime } from 'rxjs';
 })
 export class SearchBoxComponent implements OnInit, OnDestroy {
  
+  @Input()
+  public initialValue : string = '';
 
   @Input()
   public placeholder : string = '';
@@ -38,6 +40,7 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    
     this.debouncerSubscription = this.debouncer
     .pipe(
       debounceTime(500)
