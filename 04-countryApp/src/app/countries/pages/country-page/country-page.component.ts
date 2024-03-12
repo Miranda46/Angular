@@ -1,10 +1,10 @@
-import { CountriesService } from './../../services/countries.service';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SharedModule } from "../../../shared/shared.module";
 import { switchMap } from 'rxjs';
+import { CountriesService } from './../../services/countries.service';
+import { SharedModule } from "../../../shared/shared.module";
 import { Country } from '../../interfaces/countries.interfaces';
-import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'countries-country-page',
@@ -15,8 +15,9 @@ import { CommonModule } from '@angular/common';
 })
 export class CountryPageComponent implements OnInit {
   country?: Country;
-  router : Router = new Router;
+  
   constructor(
+    private router : Router,
     private activatedRoute : ActivatedRoute,
     private countriesService : CountriesService
   ) {}
