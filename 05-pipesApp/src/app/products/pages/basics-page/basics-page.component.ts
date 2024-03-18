@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
+import { PrimeNGModule } from '../../../prime-ng/prime-ng.module';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-basics-page',
+  selector: 'products-basics-page',
   standalone: true,
-  imports: [],
+  imports: [PrimeNGModule, CommonModule],
   templateUrl: './basics-page.component.html',
   styleUrl: './basics-page.component.css'
 })
 export class BasicsPageComponent {
+
+  public nameLower = 'asurbanipal';
+  public nameUpper = 'ASURBANIPAL';
+  public fullName = 'aSurBaNiPaL dE ASIriA';
 
 }
