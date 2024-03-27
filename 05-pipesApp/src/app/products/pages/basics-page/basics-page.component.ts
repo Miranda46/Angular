@@ -15,4 +15,6 @@ export class BasicsPageComponent {
   public nameUpper = 'ASURBANIPAL';
   public fullName = 'aSurBaNiPaL dE ASIriA';
 
+  public customDate : Date = new Date();
+
 }
