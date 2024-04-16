@@ -1,3 +1,5 @@
 <input type="button" (click)="manageClick();"
-    [disabled]="clicked" [value]="turn">
+    [disabled]="clicked" [value]="turn"
+    [ngClass]="clicked ? (isSymbolX ? 'blue': 'red') : ''"
+    >
 

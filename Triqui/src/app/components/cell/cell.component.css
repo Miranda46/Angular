@@ -3,4 +3,13 @@ input{
     min-height: 100%;
     border-radius: 0px;
     font-size: xx-large;
+    color: black;
+}
+
+.red {
+    background-color:rgb(151, 32, 32);
+}
+
+.blue {
+    background-color:rgb(19, 121, 78);
 }

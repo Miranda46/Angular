@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { CellComponent } from '../cell/cell.component';
 import { CommonModule } from '@angular/common';
+import { CellsService } from '../../services/cells.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'components-cell-grid',
@@ -10,11 +12,24 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cell-grid.component.css'
 })
 export class CellGridComponent {
+  public isOverSubscription? : Subscription;
 
-  public turn = "O";
+  @Output()
+  public isOver = false;
 
+  constructor(private cellsService : CellsService){
+      this.isOverSubscription = cellsService.overYet.subscribe((value) =>{
+      this.manageWin()
+    });
+  }
 
-  manageTurn(){
-    
+  
+  manageWin(){
+    console.log("aaaa")
+    this.isOver = true;
+  }
+
+  refresh(){
+    window.location.reload()
   }
 }

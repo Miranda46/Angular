@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { CellsService } from '../../services/cells.service';
+import { Symbol } from '../../interfaces/symbols.type';
 
 @Component({
   selector: 'components-cell',
@@ -9,12 +11,23 @@ import { Component } from '@angular/core';
   styleUrl: './cell.component.css'
 })
 export class CellComponent {
-  public clicked = false;
-  public turn = "O";
+  public clicked : boolean = false;
+  public turn : Symbol = '';
+  public isSymbolX = false;
+  
+  @Input()
+  public cellNumber! : number;
+  @Output()
+  public onWin : EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  manageClick() {
+
+  constructor(private cellsService : CellsService){}
+
+
+  manageClick() : void {
     this.clicked = true;
-    this.turn === "O" ? this.turn = "X" : this.turn = "O";
+    this.turn = this.cellsService.manageTurn(this.cellNumber);
+    if (this.turn === "X"){this.isSymbolX = true;}
   }
 
 }

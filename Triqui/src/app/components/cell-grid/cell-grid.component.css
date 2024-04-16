@@ -1,6 +1,6 @@
 .grid{
     display: grid;
-    gap: 2px;
+    gap: 3px;
     grid-template-columns: repeat(3, 1fr);
     margin: 10px;
     border: 1px outset #222222;
@@ -10,6 +10,7 @@
     padding: 10px;
     width: 40%;
     aspect-ratio: 1 / 1;
+    
 
 }
 
